@@ -535,6 +535,8 @@ GameObject:
   - component: {fileID: 65555918859611384}
   - component: {fileID: 114147330192312364}
   - component: {fileID: 114195893762344928}
+  - component: {fileID: 95957140804257674}
+  - component: {fileID: 114017432438245242}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2235,7 +2237,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &65555918859611384
 BoxCollider:
@@ -2247,7 +2249,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 3, z: 1}
+  m_Size: {x: 1, y: 3.1, z: 1}
   m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!95 &95222086646118678
 Animator:
@@ -2256,6 +2258,23 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1770892495378216}
+  m_Enabled: 0
+  m_Avatar: {fileID: 9000000, guid: 255377ae1700518438342ed74889e165, type: 3}
+  m_Controller: {fileID: 9100000, guid: afec2cc25e3439e4bb1b43e7c09f6503, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95957140804257674
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1522227438318172}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 255377ae1700518438342ed74889e165, type: 3}
   m_Controller: {fileID: 9100000, guid: afec2cc25e3439e4bb1b43e7c09f6503, type: 2}
@@ -2266,6 +2285,25 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114017432438245242
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1522227438318172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 95957140804257674}
+  m_ParameterSendBits: 73
+  param0: 
+  param1: 
+  param2: 
+  param3: 
+  param4: 
+  param5: 
 --- !u!114 &114141205637362264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2347,9 +2385,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  jumpForce: 300
   mouseControl:
     Damping: {x: 5, y: 0}
     Sensitivity: {x: 3, y: 0}
+  animator: {fileID: 0}
 --- !u!137 &137000319307144970
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

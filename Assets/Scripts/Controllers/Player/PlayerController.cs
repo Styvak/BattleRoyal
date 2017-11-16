@@ -13,7 +13,11 @@ public class PlayerController : NetworkBehaviour {
     }
 
     [SerializeField] private float speed;
+    [SerializeField] private float jumpForce;
     [SerializeField] private MouseInput mouseControl;
+    [SerializeField] private Animator animator;
+
+    private Rigidbody rig;
 
     private MoveController _moveController;
     public MoveController MoveController {
@@ -34,15 +38,38 @@ public class PlayerController : NetworkBehaviour {
             enabled = false;
             return;
         }
+        GetComponent<NetworkAnimator>().SetParameterAutoSend(0, true);
+        rig = GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
         playerInput = GameManager.Instance.InputController;
         GameManager.Instance.LocalPlayer = this;
 	}
 	
 	void Update () {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+            speed *= 1.5f;
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+            speed /= 1.5f;
+
+        bool grounded = Grounded();
+
+        animator.SetBool("Grounded", grounded);
+        animator.SetBool("Jump_b", !grounded);
+
+        if (Input.GetKeyDown(KeyCode.Space) && grounded)
+            rig.AddForce(transform.up * jumpForce);
+
+        animator.SetFloat("Speed_f", playerInput.Vertical * speed);
+        
         Vector2 direction = new Vector2(playerInput.Vertical * speed, playerInput.Horizontal * speed);
         MoveController.Move(direction);
 
         mouseInput.x = Mathf.Lerp(mouseInput.x, playerInput.MouseInput.x, 1f / mouseControl.Damping.x);
         transform.Rotate(Vector3.up * mouseInput.x * mouseControl.Sensitivity.x);
 	}
+
+    bool Grounded()
+    {
+        return Physics.Raycast(transform.position, Vector3.down, 0.1f);
+    }
 }
