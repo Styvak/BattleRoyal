@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 [RequireComponent(typeof(MoveController))]
-public class PlayerController : MonoBehaviour {
+public class PlayerController : NetworkBehaviour {
 
     [System.Serializable]
     public struct MouseInput {
@@ -27,7 +28,12 @@ public class PlayerController : MonoBehaviour {
     private InputController playerInput;
     private Vector2 mouseInput;
 
-	void Awake () {
+	void Start () {
+        if (!isLocalPlayer)
+        {
+            enabled = false;
+            return;
+        }
         playerInput = GameManager.Instance.InputController;
         GameManager.Instance.LocalPlayer = this;
 	}
