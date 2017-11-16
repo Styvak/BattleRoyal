@@ -599,11 +599,12 @@ PlayerSettings:
     daydream:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 6b486bd8-3c38-4056-affb-e5b93d50530b
-  projectName: BattleRoyal
+  cloudProjectId: 2a55b189-e54f-47b0-92c0-ae5ea0904dae
+  projectName: BattleRoyal (1)
   organizationId: stykm
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
