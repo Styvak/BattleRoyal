@@ -6,7 +6,7 @@ public class AssaultRifle : Shooter {
 
     public override bool Fire()
     {
-        var b = base.Fire();
+        base.Fire();
 
         if (canFire)
         {

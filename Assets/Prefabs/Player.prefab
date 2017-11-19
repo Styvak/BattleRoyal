@@ -450,6 +450,7 @@ GameObject:
   - component: {fileID: 114806435129685732}
   - component: {fileID: 114872848558362590}
   - component: {fileID: 114840909228909404}
+  - component: {fileID: 114933012213917722}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1477,7 +1478,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1522227438318172}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f5dfcc69654846c99c1728541f7c723, type: 3}
   m_Name: 
@@ -1535,13 +1536,14 @@ MonoBehaviour:
   rateOfFire: 0.3
   projectile: {fileID: 1998087309527976, guid: ab31cbac7a1ef8e41a8afa851a338159, type: 2}
   muzzle: {fileID: 4048343689911086}
+  isLocalPlayer: 0
 --- !u!114 &114806435129685732
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1522227438318172}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ffe86962b57573342ba11f6e8d970782, type: 3}
   m_Name: 
@@ -1569,19 +1571,35 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1522227438318172}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef522dfc2b826f740a2e8549bfbc36dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentWeapon: {fileID: 114652644191076174}
+--- !u!114 &114933012213917722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1522227438318172}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8780b72a65dd6417a9d996cdcc954342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 114990259309510400}
+  moveController: {fileID: 114141205637362264}
+  transformSync: {fileID: 114806435129685732}
+  playerShoot: {fileID: 114872848558362590}
+  destructable: {fileID: 114840909228909404}
 --- !u!114 &114990259309510400
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1522227438318172}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70454f9ac1c3a4ecf9d36c745479c327, type: 3}
   m_Name: 
