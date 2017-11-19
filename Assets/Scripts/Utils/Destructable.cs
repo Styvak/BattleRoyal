@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Destructable : MonoBehaviour {
+public class Destructable : NetworkBehaviour {
 
-    [SerializeField] private float hitPoints;
+    [SerializeField] protected float hitPoints;
 
     public event System.Action OnDeath;
     public event System.Action OnDamageReceived;
 
-    private float damageTaken;
+    [SyncVar(hook = "OnDamageHook")]
+    [SerializeField] protected float damageTaken;
 
 	public float HitPointsRemaining
     {
@@ -35,8 +37,11 @@ public class Destructable : MonoBehaviour {
             OnDeath();
     }
 
-    public virtual void TakeDamage(float amount)
+    [Command]
+    public virtual void CmdTakeDamage(float amount)
     {
+        if (!isServer)
+            return;
         damageTaken += amount;
 
         if (OnDamageReceived != null)
@@ -49,5 +54,14 @@ public class Destructable : MonoBehaviour {
     public void Reset()
     {
         damageTaken = 0;
+    }
+
+    void OnDamageHook(float damage)
+    {
+        OnDamageTaken(damage);
+    }
+
+    public virtual void OnDamageTaken(float damage)
+    {
     }
 }

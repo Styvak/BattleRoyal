@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour {
 
         if (!destructable)
             return;
-        destructable.TakeDamage(damage);
+        destructable.CmdTakeDamage(damage);
         Destroy(gameObject);
     }
 }
