@@ -43,6 +43,9 @@ public class PlayerController : NetworkBehaviour {
         animator = GetComponentInChildren<Animator>();
         playerInput = GameManager.Instance.InputController;
         GameManager.Instance.LocalPlayer = this;
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 	}
 	
 	void Update () {
@@ -51,10 +54,23 @@ public class PlayerController : NetworkBehaviour {
         if (Input.GetKeyUp(KeyCode.LeftShift))
             speed /= 1.5f;
 
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (Cursor.visible)
+            {
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+        }
+
         bool grounded = Grounded();
 
-        animator.SetBool("Grounded", grounded);
-        animator.SetBool("Jump_b", !grounded);
+        //animator.SetBool("Grounded", grounded);
+        //animator.SetBool("Jump_b", !grounded);
 
         if (Input.GetKeyDown(KeyCode.Space) && true)
             rig.AddForce(transform.up * jumpForce);
@@ -63,9 +79,6 @@ public class PlayerController : NetworkBehaviour {
         
         Vector2 direction = new Vector2(playerInput.Vertical * speed, playerInput.Horizontal * speed);
         MoveController.Move(direction);
-
-        mouseInput.x = Mathf.Lerp(mouseInput.x, playerInput.MouseInput.x, 1f / mouseControl.Damping.x);
-        transform.Rotate(Vector3.up * mouseInput.x * mouseControl.Sensitivity.x);
 	}
 
     bool Grounded()
