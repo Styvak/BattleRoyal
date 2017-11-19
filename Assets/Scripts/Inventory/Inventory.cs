@@ -32,7 +32,7 @@ public class Inventory :MonoBehaviour{
     public void AddItem(Ammo item)
     {
         if (_ammoList.Exists( x => x.WeaponType == item.WeaponType)){
-            _ammoList[_ammoList.IndexOf(_ammoList.Single(i => i.WeaponType == item.WeaponType))].AddAmmo(item.GetCount());
+            _ammoList[_ammoList.IndexOf(_ammoList.Single(i => i.WeaponType == item.WeaponType))].AddAmmo(item.Count);
             return;
         }
         _ammoList.Add(item);
