@@ -10,6 +10,7 @@ public class Shooter : MonoBehaviour
     [SerializeField] protected GameObject projectile;
 
     [SerializeField] protected Transform muzzle;
+    [SerializeField] private int weaponType;
 
     private WeaponReloader weaponReloader;
 
@@ -36,6 +37,9 @@ public class Shooter : MonoBehaviour
     {
         spine = transform.parent;
         weaponReloader = GetComponent<WeaponReloader>();
+
+        //To set in an equip method
+        transform.GetComponentInParent<Animator>().SetInteger("WeaponType_int", weaponType);
     }
 
     public virtual bool Fire()

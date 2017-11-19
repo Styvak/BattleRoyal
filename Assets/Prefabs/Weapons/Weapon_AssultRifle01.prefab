@@ -174,4 +174,5 @@ MonoBehaviour:
   rateOfFire: 0.3
   projectile: {fileID: 1998087309527976, guid: ab31cbac7a1ef8e41a8afa851a338159, type: 2}
   muzzle: {fileID: 4745497268260438}
+  weaponType: 5
   isLocalPlayer: 0
