@@ -9,9 +9,12 @@ public class TransformSync : NetworkBehaviour {
 
     [SyncVar] private Vector3 syncPos;
     [SyncVar] private Quaternion syncRot;
+    [SyncVar] private Quaternion syncChildRot;
 
     [SerializeField] private Transform myTransform;
     [SerializeField] private float lerpRate = 15;
+
+    [SerializeField] private Transform child;
 
     private void FixedUpdate()
     {
@@ -55,6 +58,8 @@ public class TransformSync : NetworkBehaviour {
         if (!isLocalPlayer)
         {
             myTransform.rotation = Quaternion.Lerp(myTransform.rotation, syncRot, Time.deltaTime * lerpRate);
+            if (child)
+                child.rotation = Quaternion.Lerp(child.rotation, syncChildRot, Time.deltaTime * lerpRate);
         }
     }
 
@@ -64,12 +69,20 @@ public class TransformSync : NetworkBehaviour {
         syncRot = rot;
     }
 
+    [Command]
+    void CmdProvideChildRotationToServer(Quaternion rot)
+    {
+        syncChildRot = rot;
+    }
+
     [ClientCallback]
     void TransmitRotation()
     {
         if (isLocalPlayer)
         {
             CmdProvideRotationToServer(myTransform.rotation);
+            if (child)
+                CmdProvideChildRotationToServer(child.rotation);
         }
     }
 }

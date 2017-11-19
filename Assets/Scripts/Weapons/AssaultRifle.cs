@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class AssaultRifle : Shooter {
 
-    public override void Fire()
+    public override bool Fire()
     {
-        base.Fire();
+        var b = base.Fire();
 
         if (canFire)
         {
-            Instantiate(projectile, muzzle.position, muzzle.rotation);
+            //var bullet = Instantiate(projectile, muzzle.position, muzzle.rotation);
+            return true;
         }
+        return false;
     }
 }

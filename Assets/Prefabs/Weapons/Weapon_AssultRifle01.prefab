@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33178795999187084}
   - component: {fileID: 23265110904902396}
   - component: {fileID: 114829163039423582}
+  - component: {fileID: 114130941719531882}
   m_Layer: 0
   m_Name: Weapon_AssultRifle01
   m_TagString: Untagged
@@ -112,6 +113,38 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1751337942338344}
   m_Mesh: {fileID: 4300000, guid: 344a3d604644509489c062f11bbe78a5, type: 3}
+--- !u!114 &114130941719531882
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1751337942338344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 193
+    i1: 2
+    i2: 154
+    i3: 88
+    i4: 129
+    i5: 199
+    i6: 114
+    i7: 196
+    i8: 248
+    i9: 92
+    i10: 63
+    i11: 58
+    i12: 131
+    i13: 152
+    i14: 229
+    i15: 52
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114829163039423582
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,6 +157,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rateOfFire: 0.3
-  projectile: {fileID: 114989568204512332, guid: ab31cbac7a1ef8e41a8afa851a338159,
-    type: 2}
+  projectile: {fileID: 1998087309527976, guid: ab31cbac7a1ef8e41a8afa851a338159, type: 2}
   muzzle: {fileID: 4745497268260438}

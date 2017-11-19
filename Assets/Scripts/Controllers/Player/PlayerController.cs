@@ -53,8 +53,8 @@ public class PlayerController : NetworkBehaviour {
 
         bool grounded = Grounded();
 
-        animator.SetBool("Grounded", grounded);
-        animator.SetBool("Jump_b", !grounded);
+        //animator.SetBool("Grounded", grounded);
+        //animator.SetBool("Jump_b", !grounded);
 
         if (Input.GetKeyDown(KeyCode.Space) && grounded)
             rig.AddForce(transform.up * jumpForce);
@@ -63,9 +63,6 @@ public class PlayerController : NetworkBehaviour {
         
         Vector2 direction = new Vector2(playerInput.Vertical * speed, playerInput.Horizontal * speed);
         MoveController.Move(direction);
-
-        mouseInput.x = Mathf.Lerp(mouseInput.x, playerInput.MouseInput.x, 1f / mouseControl.Damping.x);
-        transform.Rotate(Vector3.up * mouseInput.x * mouseControl.Sensitivity.x);
 	}
 
     bool Grounded()
