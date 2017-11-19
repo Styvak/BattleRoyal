@@ -56,7 +56,7 @@ public class PlayerController : NetworkBehaviour {
         animator.SetBool("Grounded", grounded);
         animator.SetBool("Jump_b", !grounded);
 
-        if (Input.GetKeyDown(KeyCode.Space) && grounded)
+        if (Input.GetKeyDown(KeyCode.Space) && true)
             rig.AddForce(transform.up * jumpForce);
 
         animator.SetFloat("Speed_f", playerInput.Vertical * speed);
