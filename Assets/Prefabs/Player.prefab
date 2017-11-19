@@ -1466,7 +1466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Animator: {fileID: 95957140804257674}
-  m_ParameterSendBits: 73
+  m_ParameterSendBits: 105
   param0: 
   param1: 
   param2: 
@@ -1558,7 +1558,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1522227438318172}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ffe86962b57573342ba11f6e8d970782, type: 3}
   m_Name: 
@@ -1580,6 +1580,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 100
+  damageTaken: 0
+  healthBar: {fileID: 0}
 --- !u!114 &114872848558362590
 MonoBehaviour:
   m_ObjectHideFlags: 1
