@@ -43,6 +43,9 @@ public class PlayerController : NetworkBehaviour {
         animator = GetComponentInChildren<Animator>();
         playerInput = GameManager.Instance.InputController;
         GameManager.Instance.LocalPlayer = this;
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 	}
 	
 	void Update () {
@@ -50,6 +53,19 @@ public class PlayerController : NetworkBehaviour {
             speed *= 1.5f;
         if (Input.GetKeyUp(KeyCode.LeftShift))
             speed /= 1.5f;
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (Cursor.visible)
+            {
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+        }
 
         bool grounded = Grounded();
 
