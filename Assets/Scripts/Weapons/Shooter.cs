@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(WeaponReloader))]
 public class Shooter : MonoBehaviour
 {
 
@@ -9,6 +10,8 @@ public class Shooter : MonoBehaviour
     [SerializeField] protected GameObject projectile;
 
     [SerializeField] protected Transform muzzle;
+
+    private WeaponReloader weaponReloader;
 
     public bool isLocalPlayer = false;
 
@@ -32,6 +35,7 @@ public class Shooter : MonoBehaviour
     private void Awake()
     {
         spine = transform.parent;
+        weaponReloader = GetComponent<WeaponReloader>();
     }
 
     public virtual bool Fire()
@@ -40,6 +44,11 @@ public class Shooter : MonoBehaviour
 
         if (Time.time < nextFireAllowed)
             return false;
+        if (weaponReloader.IsReloading)
+            return false;
+        if (weaponReloader.RoundsRemainingClip == 0)
+            return false;
+        weaponReloader.TakeFromClip(1);
         nextFireAllowed = Time.time + rateOfFire;
         canFire = true;
         return true;
@@ -62,5 +71,10 @@ public class Shooter : MonoBehaviour
 
         //Vector3 eulerAngleOffset = new Vector3(3.67f, 44.95f, 7.45f);
         //spine.Rotate(eulerAngleOffset);
+    }
+
+    public void Reload()
+    {
+        weaponReloader.Reload();
     }
 }

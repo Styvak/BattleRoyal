@@ -394,6 +394,7 @@ GameObject:
   - component: {fileID: 33582996446175388}
   - component: {fileID: 23137333783549874}
   - component: {fileID: 114652644191076174}
+  - component: {fileID: 114329771202510706}
   m_Layer: 0
   m_Name: Weapon_AssultRifle01
   m_TagString: Untagged
@@ -1490,6 +1491,20 @@ MonoBehaviour:
     aimDetectionLayers:
       serializedVersion: 2
       m_Bits: 0
+--- !u!114 &114329771202510706
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1445506671774460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5065b14a1228d4e8988290e7944ced80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAmmo: 500
+  reloadTime: 2
+  clipSize: 20
 --- !u!114 &114474828886959472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1583,7 +1598,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1522227438318172}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8780b72a65dd6417a9d996cdcc954342, type: 3}
   m_Name: 
