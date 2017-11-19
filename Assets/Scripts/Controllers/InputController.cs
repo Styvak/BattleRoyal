@@ -10,6 +10,9 @@ public class InputController : MonoBehaviour {
     public float Crouch;
     public float Sprint;
     public Vector2 MouseInput;
+    public bool Fire1;
+    public bool Fire2;
+    public bool Reload;
 
 	void Update () {
         Vertical = Input.GetAxis("Vertical");
@@ -18,5 +21,8 @@ public class InputController : MonoBehaviour {
         Crouch = Input.GetAxis("Crouch");
         Sprint = Input.GetAxis("Sprint");
         MouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        Fire1 = Input.GetButton("Fire1");
+        Fire2 = Input.GetButton("Fire2");
+        Reload = Input.GetKeyDown(KeyCode.R);
 	}
 }
