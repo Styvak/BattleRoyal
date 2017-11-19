@@ -14,4 +14,12 @@ public class Weapon : InventoryItem {
     {
         get { return _weaponPrefab; }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            other.transform.GetComponent<Inventory>().AddItem(this);
+        }
+    }
 }

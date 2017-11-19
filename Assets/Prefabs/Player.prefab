@@ -11,21 +11,6 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1522227438318172}
   m_IsPrefabParent: 1
---- !u!1 &1041743048644934
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4048343689911086}
-  m_Layer: 0
-  m_Name: Muzzle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1042139464774678
 GameObject:
   m_ObjectHideFlags: 1
@@ -383,25 +368,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!1 &1445506671774460
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4063743647544368}
-  - component: {fileID: 33582996446175388}
-  - component: {fileID: 23137333783549874}
-  - component: {fileID: 114652644191076174}
-  - component: {fileID: 114329771202510706}
-  m_Layer: 0
-  m_Name: Weapon_AssultRifle01
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1449122694923250
 GameObject:
   m_ObjectHideFlags: 1
@@ -452,9 +418,10 @@ GameObject:
   - component: {fileID: 114872848558362590}
   - component: {fileID: 114840909228909404}
   - component: {fileID: 114933012213917722}
+  - component: {fileID: 114694223039896146}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -788,19 +755,6 @@ Transform:
   m_Father: {fileID: 4381437140224068}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4048343689911086
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1041743048644934}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9614, y: 0.175, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4063743647544368}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4056729138353132
 Transform:
   m_ObjectHideFlags: 1
@@ -817,20 +771,6 @@ Transform:
   m_Father: {fileID: 4792420057453452}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4063743647544368
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1445506671774460}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4048343689911086}
-  m_Father: {fileID: 4897891276610710}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4114005999522052
 Transform:
   m_ObjectHideFlags: 1
@@ -1288,8 +1228,7 @@ Transform:
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4063743647544368}
+  m_Children: []
   m_Father: {fileID: 4414710549186256}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1351,47 +1290,6 @@ Transform:
   m_Father: {fileID: 4396207422398456}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23137333783549874
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1445506671774460}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 5b86731bf9ef79c4da5245d379527a78, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &33582996446175388
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1445506671774460}
-  m_Mesh: {fileID: 4300000, guid: 344a3d604644509489c062f11bbe78a5, type: 3}
 --- !u!54 &54785017744484492
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -1473,20 +1371,6 @@ MonoBehaviour:
     aimDetectionLayers:
       serializedVersion: 2
       m_Bits: 0
---- !u!114 &114329771202510706
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1445506671774460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5065b14a1228d4e8988290e7944ced80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxAmmo: 500
-  reloadTime: 2
-  clipSize: 20
 --- !u!114 &114474828886959472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1519,22 +1403,19 @@ MonoBehaviour:
     i15: 124
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
---- !u!114 &114652644191076174
+--- !u!114 &114694223039896146
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1445506671774460}
+  m_GameObject: {fileID: 1522227438318172}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47eea761baa33634fac4d5c040ad4970, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ea7bf63e7c4148bfa9b9fea78609461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rateOfFire: 0.3
-  projectile: {fileID: 1998087309527976, guid: ab31cbac7a1ef8e41a8afa851a338159, type: 2}
-  muzzle: {fileID: 4048343689911086}
-  weaponType: 5
-  isLocalPlayer: 0
+  _maxWeaponsNumber: 5
+  _weaponParent: {fileID: 4897891276610710}
 --- !u!114 &114806435129685732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1576,7 +1457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef522dfc2b826f740a2e8549bfbc36dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeapon: {fileID: 114652644191076174}
+  currentWeapon: {fileID: 0}
 --- !u!114 &114933012213917722
 MonoBehaviour:
   m_ObjectHideFlags: 1

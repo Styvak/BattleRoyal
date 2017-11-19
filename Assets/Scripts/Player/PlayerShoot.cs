@@ -14,7 +14,8 @@ public class PlayerShoot : NetworkBehaviour {
             enabled = false;
             return;
         }
-        GetComponentInChildren<Shooter>().isLocalPlayer = true;
+        //When equip
+        //GetComponentInChildren<Shooter>().isLocalPlayer = true;
     }
 
     void Update () {
