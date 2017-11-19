@@ -37,8 +37,10 @@ public class Shooter : MonoBehaviour
     {
         spine = transform.parent;
         weaponReloader = GetComponent<WeaponReloader>();
+    }
 
-        //To set in an equip method
+    public void Equip()
+    {
         transform.GetComponentInParent<Animator>().SetInteger("WeaponType_int", weaponType);
     }
 

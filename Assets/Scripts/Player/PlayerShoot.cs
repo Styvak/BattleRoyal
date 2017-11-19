@@ -14,8 +14,6 @@ public class PlayerShoot : NetworkBehaviour {
             enabled = false;
             return;
         }
-        //When equip
-        //GetComponentInChildren<Shooter>().isLocalPlayer = true;
     }
 
     void Update () {
@@ -32,5 +30,13 @@ public class PlayerShoot : NetworkBehaviour {
     {
         var obj = Instantiate(currentWeapon.Prefab, currentWeapon.Muzzle.position, currentWeapon.Muzzle.rotation);
         NetworkServer.Spawn(obj);
+    }
+
+    public void Equip()
+    {
+        var shooter = GetComponentInChildren<Shooter>();
+        currentWeapon = shooter;
+        shooter.isLocalPlayer = true;
+        shooter.Equip();
     }
 }

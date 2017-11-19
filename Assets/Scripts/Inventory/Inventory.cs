@@ -19,6 +19,8 @@ public class Inventory :MonoBehaviour{
         _weaponsList.Add(new Tuple<Weapon, GameObject>(item, tmp));
         if (_weaponsList.Count() > 1)
             tmp.SetActive(false);
+        else
+            Equip();
     }
 
     public void DropItem()
@@ -41,32 +43,43 @@ public class Inventory :MonoBehaviour{
 
     public void GetNextWeapon(){
         _weaponsList[_currentWeapon].Second.SetActive(false);
-        if (_currentWeapon == _maxWeaponsNumber - 1)
+        if (_currentWeapon == _weaponsList.Count - 1)
             _currentWeapon = 0;
         else
             _currentWeapon++;
         _weaponsList[_currentWeapon].Second.SetActive(true);
+        Equip();
     }
 
     public void GetPrevWeapon()
     {
         _weaponsList[_currentWeapon].Second.SetActive(false);
         if (_currentWeapon == 0)
-            _currentWeapon = _maxWeaponsNumber - 1;
+            _currentWeapon = _weaponsList.Count - 1;
         else
             _currentWeapon--;
         _weaponsList[_currentWeapon].Second.SetActive(true);
+        Equip();
     }
 
     public void GetWeaponAt(int index)
     {
-        _weaponsList[_currentWeapon].Second.SetActive(false);
         if (index < _weaponsList.Count)
-            _weaponsList[_currentWeapon].Second.SetActive(true);
+        {
+            _weaponsList[_currentWeapon].Second.SetActive(false);
+            _weaponsList[index].Second.SetActive(true);
+            _currentWeapon = index;
+            Equip();
+        }
     }
 
     public int GetMaxWeaponNumber()
     {
         return (_maxWeaponsNumber);
+    }
+
+    void Equip()
+    {
+        GetComponent<PlayerShoot>().Equip();
     }
 }
