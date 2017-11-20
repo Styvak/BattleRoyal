@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Inventory :MonoBehaviour{
+public class Inventory : MonoBehaviour{
 
     [SerializeField] private int _maxWeaponsNumber;
     [SerializeField] private Transform _weaponParent;
@@ -16,11 +16,12 @@ public class Inventory :MonoBehaviour{
             DropItem();
         }       
         var tmp = Instantiate(item.WeaponPrefab, _weaponParent) as GameObject;
-        _weaponsList.Add(new Tuple<Weapon, GameObject>(item, tmp));
+        _weaponsList.Add(new Tuple<Weapon, GameObject>(item.Prefab, tmp));
         if (_weaponsList.Count() > 1)
             tmp.SetActive(false);
         else
             Equip();
+        Destroy(item.gameObject);
     }
 
     public void DropItem()

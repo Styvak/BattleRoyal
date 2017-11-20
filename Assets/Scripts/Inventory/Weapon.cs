@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class Weapon : InventoryItem {
 
-    [SerializeField]private WeaponType _weaponType;
+    [SerializeField] private WeaponType _weaponType;
+    [SerializeField] private Weapon _prefab;
+
+    public Weapon Prefab {
+        get {
+            return _prefab;
+        }
+    }
+
     public WeaponType WeaponType{ 
         get {return _weaponType; }
     }

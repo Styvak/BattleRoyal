@@ -70,6 +70,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4843859333321920}
+  - component: {fileID: 65938017920623364}
+  - component: {fileID: 114032727002199986}
   m_Layer: 0
   m_Name: AssaultRifle01
   m_TagString: Untagged
@@ -156,8 +158,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1794384495458106}
-  m_LocalRotation: {x: -0, y: -0.7377487, z: 0, w: -0.6750755}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0.87154496, z: -0, w: -0.49031556}
+  m_LocalPosition: {x: 6.39, y: 0, z: 4.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4951545272423388}
@@ -233,6 +235,33 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1295186136590806}
   m_Mesh: {fileID: 4300000, guid: 344a3d604644509489c062f11bbe78a5, type: 3}
+--- !u!65 &65938017920623364
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1794384495458106}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.93, y: 1.8, z: 1}
+  m_Center: {x: 0, y: 1.09, z: 0}
+--- !u!114 &114032727002199986
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1794384495458106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29024b7da1f1c42d09f50d95a171127a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponType: 0
+  _prefab: {fileID: 114032727002199986}
+  _weaponPrefab: {fileID: 1751337942338344, guid: c1029a5881c772c4f85c3f3a8398e534,
+    type: 2}
 --- !u!198 &198197867927016746
 ParticleSystem:
   m_ObjectHideFlags: 1
