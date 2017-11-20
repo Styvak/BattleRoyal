@@ -93,7 +93,6 @@ public class Inventory : MonoBehaviour{
     private void Update()
     {
         if (inputController.Num1) {
-            Debug.Log("1");
             GetWeaponAt(0);
         } else if (inputController.Num2) {
             GetWeaponAt(1);

@@ -30,18 +30,15 @@ public class InputController : MonoBehaviour {
         Fire2 = Input.GetButton("Fire2");
         Reload = Input.GetKeyDown(KeyCode.R);
         Num1 = Input.GetKeyDown(KeyCode.Ampersand);
-        Num2 = Input.GetKeyDown(KeyCode.Alpha1);
-        Num3 = Input.GetKeyDown(KeyCode.Alpha3);
-        Num4 = Input.GetKeyDown(KeyCode.Alpha4);
+        Num2 = Input.GetKeyDown(KeyCode.Alpha2);
+        Num3 = Input.GetKeyDown(KeyCode.DoubleQuote);
+        Num4 = Input.GetKeyDown(KeyCode.Quote);
         Num5 = Input.GetKeyDown(KeyCode.Alpha5);
 
-        foreach (KeyCode kcode in System.Enum.GetValues(typeof(KeyCode)))
-        {
-            if (Input.GetKeyDown(kcode))
-                Debug.Log("KeyCode down: " + kcode);
-        }
-        if (Num2) {
-            Debug.Log("YEAAHHHHH");
-        }
+        //foreach (KeyCode kcode in System.Enum.GetValues(typeof(KeyCode)))
+        //{
+        //    if (Input.GetKeyDown(kcode))
+        //        Debug.Log("KeyCode down: " + kcode);
+        //}
 	}
 }
