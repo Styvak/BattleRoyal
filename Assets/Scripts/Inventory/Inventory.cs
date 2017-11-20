@@ -10,6 +10,7 @@ public class Inventory : MonoBehaviour{
     private int _currentWeapon;
     private List<Tuple< Weapon, GameObject>> _weaponsList = new List<Tuple<Weapon, GameObject>>();
     private List<Ammo> _ammoList = new List<Ammo>();
+    private InputController inputController;
 
     public void AddItem(Weapon item){
         if (_weaponsList.Count == _maxWeaponsNumber - 1){
@@ -82,5 +83,26 @@ public class Inventory : MonoBehaviour{
     void Equip()
     {
         GetComponent<PlayerShoot>().Equip();
+    }
+
+    private void Start()
+    {
+        inputController = GameManager.Instance.InputController;
+    }
+
+    private void Update()
+    {
+        if (inputController.Num1) {
+            Debug.Log("1");
+            GetWeaponAt(0);
+        } else if (inputController.Num2) {
+            GetWeaponAt(1);
+        } else if (inputController.Num3) {
+            GetWeaponAt(2);
+        } else if (inputController.Num4) {
+            GetWeaponAt(3);
+        } else if (inputController.Num5) {
+            GetWeaponAt(4);
+        }
     }
 }
