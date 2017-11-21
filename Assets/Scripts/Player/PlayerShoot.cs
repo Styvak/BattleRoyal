@@ -32,9 +32,8 @@ public class PlayerShoot : NetworkBehaviour {
         NetworkServer.Spawn(obj);
     }
 
-    public void Equip()
+    public void Equip(Shooter shooter)
     {
-        var shooter = GetComponentInChildren<Shooter>();
         currentWeapon = shooter;
         shooter.isLocalPlayer = true;
         shooter.Equip();

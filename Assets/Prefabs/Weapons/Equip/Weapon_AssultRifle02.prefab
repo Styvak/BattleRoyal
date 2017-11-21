@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23576820505620504}
   - component: {fileID: 114968553947923744}
   - component: {fileID: 114822724030525990}
-  - component: {fileID: 114572252269248430}
+  - component: {fileID: 114958570725093538}
   m_Layer: 0
   m_Name: Weapon_AssultRifle02
   m_TagString: Untagged
@@ -114,7 +114,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1037091819450004}
   m_Mesh: {fileID: 4300002, guid: 344a3d604644509489c062f11bbe78a5, type: 3}
---- !u!114 &114572252269248430
+--- !u!114 &114822724030525990
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1037091819450004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47eea761baa33634fac4d5c040ad4970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rateOfFire: 0.4
+  projectile: {fileID: 1259378863594584, guid: 66930868932f44f66b9a21c0d797e59c, type: 2}
+  muzzle: {fileID: 4185400357741204}
+  weaponType: 5
+  isLocalPlayer: 0
+--- !u!114 &114958570725093538
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -145,23 +161,7 @@ MonoBehaviour:
     i14: 167
     i15: 81
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
---- !u!114 &114822724030525990
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1037091819450004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47eea761baa33634fac4d5c040ad4970, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rateOfFire: 0.4
-  projectile: {fileID: 1259378863594584, guid: 66930868932f44f66b9a21c0d797e59c, type: 2}
-  muzzle: {fileID: 4185400357741204}
-  weaponType: 5
-  isLocalPlayer: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114968553947923744
 MonoBehaviour:
   m_ObjectHideFlags: 1

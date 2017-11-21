@@ -41,6 +41,8 @@ public class Shooter : MonoBehaviour
 
     public void Equip()
     {
+        spine = transform.parent;
+        weaponReloader = GetComponent<WeaponReloader>();
         transform.GetComponentInParent<Animator>().SetInteger("WeaponType_int", weaponType);
     }
 
@@ -60,7 +62,7 @@ public class Shooter : MonoBehaviour
         return true;
     }
 
-    void LateUpdate()
+    public virtual void Update()
     {
         if (isLocalPlayer)
             PositionSpine();
@@ -73,7 +75,7 @@ public class Shooter : MonoBehaviour
         Vector3 dir = mainCamT.forward;
         Ray ray = new Ray(mainCamPos, dir);
 
-        spine.LookAt(ray.GetPoint(500));
+        transform.parent.LookAt(ray.GetPoint(500));
 
         //Vector3 eulerAngleOffset = new Vector3(3.67f, 44.95f, 7.45f);
         //spine.Rotate(eulerAngleOffset);

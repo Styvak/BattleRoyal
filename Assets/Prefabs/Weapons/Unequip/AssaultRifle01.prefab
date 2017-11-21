@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 4843859333321920}
   - component: {fileID: 65938017920623364}
   - component: {fileID: 114032727002199986}
+  - component: {fileID: 114335244235799050}
   m_Layer: 0
   m_Name: AssaultRifle01
   m_TagString: Untagged
@@ -262,6 +263,38 @@ MonoBehaviour:
   _prefab: {fileID: 114032727002199986}
   _weaponPrefab: {fileID: 1751337942338344, guid: c1029a5881c772c4f85c3f3a8398e534,
     type: 2}
+--- !u!114 &114335244235799050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1794384495458106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 118
+    i1: 28
+    i2: 167
+    i3: 152
+    i4: 173
+    i5: 102
+    i6: 68
+    i7: 145
+    i8: 218
+    i9: 85
+    i10: 118
+    i11: 134
+    i12: 162
+    i13: 28
+    i14: 56
+    i15: 198
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!198 &198197867927016746
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -10,6 +10,7 @@ public class NetworkPlayer : NetworkBehaviour {
     [SerializeField] private TransformSync transformSync;
     [SerializeField] private PlayerShoot playerShoot;
     [SerializeField] private Destructable destructable;
+    [SerializeField] private Inventory inventory;
 
 	void Start () {
         if (isLocalPlayer)
@@ -19,6 +20,7 @@ public class NetworkPlayer : NetworkBehaviour {
             transformSync.enabled = true;
             playerShoot.enabled = true;
             destructable.enabled = true;
+            inventory.enabled = true;
         }
 	}
 }
