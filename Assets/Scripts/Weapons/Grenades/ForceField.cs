@@ -20,7 +20,7 @@ public class ForceField : MonoBehaviour {
         {
             if (other.tag == "Player")
                 other.gameObject.GetComponent<TimeBehaviour>().TimeController(timeValue);
-            else
+            else if (other.gameObject.GetComponent<TimeBehaviour>())
                 other.gameObject.GetComponent<TimeBehaviour>().TimeController(timeValue / 10f);
         }
     }
@@ -30,7 +30,7 @@ public class ForceField : MonoBehaviour {
         yield return new WaitForSeconds(duration);
         foreach (var col in colliders)
         {
-            if (col.gameObject.GetComponent<Rigidbody>())
+            if (col.gameObject.GetComponent<Rigidbody>() && col.gameObject.GetComponent<TimeBehaviour>())
             {
                 col.gameObject.GetComponent<TimeBehaviour>().TimeController(1f);
             }
