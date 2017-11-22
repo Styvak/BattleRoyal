@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour {
     protected virtual void OnTriggerEnter(Collider other)
     {
         var destructable = other.transform.GetComponent<Destructable>();
-        if (!destructable && other.tag == "ForceField") {
+        if ((!destructable && other.tag == "ForceField") || (other.tag == "Zone")) {
             return;
         }
         if (!destructable) {
