@@ -5,6 +5,7 @@ using UnityEngine;
 public class MoveController : MonoBehaviour {
 
     private Camera TPSCamera;
+    private TimeBehaviour timeBehaviour;
 
     [System.Serializable]
     public class OtherSettings
@@ -20,11 +21,12 @@ public class MoveController : MonoBehaviour {
     void Start()
     {
         TPSCamera = Camera.main;
+        timeBehaviour = GetComponent<TimeBehaviour>();
     }
 
     public void Move(Vector2 direction) {
         CharacterLook();
-        transform.position += transform.forward * direction.x * Time.deltaTime + transform.right * direction.y * Time.deltaTime;
+        transform.position += transform.forward * direction.x * Time.deltaTime * timeBehaviour.LocalTimeScale + transform.right * direction.y * Time.deltaTime * timeBehaviour.LocalTimeScale;
     }
 
     void CharacterLook()
@@ -39,7 +41,7 @@ public class MoveController : MonoBehaviour {
         lookRot.x = 0;
         lookRot.z = 0;
 
-        Quaternion newRotation = Quaternion.Lerp(transform.rotation, lookRot, Time.deltaTime * other.lookSpeed);
+        Quaternion newRotation = Quaternion.Lerp(transform.rotation, lookRot, Time.deltaTime * other.lookSpeed * timeBehaviour.LocalTimeScale);
         transform.rotation = newRotation;
     }
 }

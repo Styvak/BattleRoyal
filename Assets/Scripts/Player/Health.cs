@@ -24,8 +24,6 @@ public class Health : Destructable
     {
         base.OnDamageTaken(damage);
 
-        Debug.Log(damage);
-
         if (healthBar)
             healthBar.fillAmount = (hitPoints - damage) / hitPoints;
     }
