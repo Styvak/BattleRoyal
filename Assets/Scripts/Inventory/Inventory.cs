@@ -177,12 +177,19 @@ public class Inventory : NetworkBehaviour {
             GetWeaponAt(4);
         }else if (inputController.Grenade) {
             if(_grenadeList.Count > 0){
-                var obj = Instantiate(_grenadeList[0].WeaponPrefab, 
-                                      new Vector3(gameObject.transform.position.x,gameObject.transform.position.y +1.5f, gameObject.transform.position.z) ,
-                                      gameObject.transform.rotation);
-                _grenadeList.RemoveAt(0);
-                NetworkServer.Spawn(obj);
+                CmdSpawnGrenade();
             }
         }
+    }
+
+    [Command]
+    void CmdSpawnGrenade()
+    {
+        var obj = Instantiate(_grenadeList[0].WeaponPrefab,
+                                      new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1.5f, gameObject.transform.position.z),
+                                      gameObject.transform.rotation);
+        obj.GetComponent<GrenadeShoot>().Player = gameObject;
+        _grenadeList.RemoveAt(0);
+        NetworkServer.Spawn(obj);
     }
 }
