@@ -23,7 +23,7 @@ public class PartyManager : NetworkBehaviour {
 
     [SyncVar] public StateFSM state = StateFSM.WaitForPlayers;
 
-    private bool coroutineRunning = false;
+    [SyncVar] private bool coroutineRunning = false;
 
     void Start()
     {
@@ -48,19 +48,23 @@ public class PartyManager : NetworkBehaviour {
             case StateFSM.WaitForPlayers:
                 if (playerCount == maxPlayer)
                 {
-                    state = StateFSM.Battle;
-                    playerAlive = playerCount;
                     if (coroutineRunning)
                     {
                         StopCoroutine("StartWithMinPlayer");
+                        Debug.Log("Stop corou");
+                        CmdSetCoroutine(false);
                         timerText.gameObject.SetActive(false);
                     }
+                    state = StateFSM.Battle;
+                    playerAlive = playerCount;
                 }
                 if (playerCount == minPlayer && !coroutineRunning) {
                     StartCoroutine("StartWithMinPlayer");
                 }
                 break;
             case StateFSM.Battle:
+                Debug.Log("Battle");
+                timerText.gameObject.SetActive(false);
                 if (playerAlive == 1)
                 {
                     state = StateFSM.End;
@@ -74,26 +78,33 @@ public class PartyManager : NetworkBehaviour {
         }
     }
 
+    [Command]
+    void CmdSetCoroutine(bool act)
+    {
+        Debug.Log("act");
+        coroutineRunning = act;
+    }
+
     IEnumerator StartWithMinPlayer()
     {
-        coroutineRunning = true;
+        if (!isServer)
+            yield break;
+        CmdSetCoroutine(true);
         timerText.gameObject.SetActive(true);
-        if (isServer)
+        while (timeLeft > 0)
         {
-            while (timeLeft > 0)
-            {
-                yield return new WaitForSeconds(1f);
-                timeLeft--;
-            }
+            yield return new WaitForSeconds(1f);
+            timeLeft--;
         }
-        timerText.gameObject.SetActive(false);
-        coroutineRunning = false;
+        CmdSetCoroutine(false);
         state = StateFSM.Battle;
+        Debug.Log("End corou");
         playerAlive = GameObject.FindGameObjectsWithTag("Player").Length;
     }
 
     void OnTimeLeftChange(int time)
     {
+        timerText.gameObject.SetActive(true);
         timerText.text = time + (time <= 1 ? " seconde" : " secondes");
     }
 }
