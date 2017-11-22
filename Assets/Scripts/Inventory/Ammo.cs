@@ -14,6 +14,9 @@ public class Ammo : InventoryItem {
         get { return _count; }
     }
 
+    public Ammo(int count){
+        _count = count;
+    }
     public void AddAmmo(int nb)
     {
         _count += nb;
@@ -24,4 +27,11 @@ public class Ammo : InventoryItem {
         _count -= nb;
     }
 	
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            other.transform.GetComponent<Inventory>().AddItem(this);
+        }
+    }
 }

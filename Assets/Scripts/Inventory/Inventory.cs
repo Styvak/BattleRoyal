@@ -10,7 +10,8 @@ public class Inventory : NetworkBehaviour {
     [SerializeField] private Transform _weaponParent;
     private int _currentWeapon = 0;
     private List<Tuple< Weapon, GameObject>> _weaponsList = new List<Tuple<Weapon, GameObject>>();
-    private List<Ammo> _ammoList = new List<Ammo>();
+    public List<Ammo> _ammoList = new List<Ammo>();
+    public List<Grenade> _grenadeList = new List<Grenade>();
     private InputController inputController;
 
     public void AddItem(Weapon item){
@@ -35,6 +36,12 @@ public class Inventory : NetworkBehaviour {
         NetworkServer.Destroy(item.gameObject);
     }
 
+    public void AddItem(Grenade item)
+    {
+        _grenadeList.Add(item);
+        NetworkServer.Destroy(item.gameObject);
+    }
+
     public void DropItem()
     {
         Instantiate(_weaponsList[_currentWeapon].First, gameObject.transform.position, Quaternion.identity);
@@ -45,11 +52,15 @@ public class Inventory : NetworkBehaviour {
 
     public void AddItem(Ammo item)
     {
-        if (_ammoList.Exists( x => x.WeaponType == item.WeaponType)){
+        if (_ammoList.Exists(x => x.WeaponType == item.WeaponType))
+        {
             _ammoList[_ammoList.IndexOf(_ammoList.Single(i => i.WeaponType == item.WeaponType))].AddAmmo(item.Count);
+            NetworkServer.Destroy(item.gameObject);
             return;
         }
-        _ammoList.Add(item);
+        var tmp = new Ammo(item.Count);
+        _ammoList.Add(tmp);
+        NetworkServer.Destroy(item.gameObject);
     }
 
 
@@ -85,6 +96,36 @@ public class Inventory : NetworkBehaviour {
         }
     }
 
+    public int GetAmmo(WeaponType weaponType, int chargerNb){
+        if (_ammoList.Exists(x => x.WeaponType == weaponType))
+        {
+            int index = _ammoList.IndexOf(_ammoList.Single(i => i.WeaponType == weaponType));
+            if (_ammoList[index].Count >= chargerNb)
+            {
+                _ammoList[index].SubAmmo(chargerNb);
+                return chargerNb;
+            }
+            else
+            {
+                _ammoList[index].SubAmmo(_ammoList[index].Count);
+                return _ammoList[index].Count;
+            }
+
+        }
+        return 0;
+    }
+
+    public int GetAmmo(WeaponType weaponType)
+    {
+        if (_ammoList.Exists(x => x.WeaponType == weaponType))
+        {
+            int index = _ammoList.IndexOf(_ammoList.Single(i => i.WeaponType == weaponType));
+            return (_ammoList[index].Count);
+        }
+        return 0;
+    }
+
+
     public int GetMaxWeaponNumber()
     {
         return (_maxWeaponsNumber);
@@ -112,7 +153,9 @@ public class Inventory : NetworkBehaviour {
     void RpcEnableObject(int idx, bool active)
     {
         if (_weaponParent.Find(idx.ToString()))
+        {
             _weaponParent.Find(idx.ToString()).gameObject.SetActive(active);
+        }
     }
 
     private void Start()
@@ -132,6 +175,14 @@ public class Inventory : NetworkBehaviour {
             GetWeaponAt(3);
         } else if (inputController.Num5) {
             GetWeaponAt(4);
+        }else if (inputController.Grenade) {
+            if(_grenadeList.Count > 0){
+                var obj = Instantiate(_grenadeList[0].WeaponPrefab, 
+                                      new Vector3(gameObject.transform.position.x,gameObject.transform.position.y +1.5f, gameObject.transform.position.z) ,
+                                      gameObject.transform.rotation);
+                _grenadeList.RemoveAt(0);
+                NetworkServer.Spawn(obj);
+            }
         }
     }
 }

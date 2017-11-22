@@ -18,6 +18,7 @@ public class InputController : MonoBehaviour {
     public bool Num3;
     public bool Num4;
     public bool Num5;
+    public bool Grenade;
 
 	void Update () {
         Vertical = Input.GetAxis("Vertical");
@@ -34,6 +35,7 @@ public class InputController : MonoBehaviour {
         Num3 = Input.GetKeyDown(KeyCode.DoubleQuote);
         Num4 = Input.GetKeyDown(KeyCode.Quote);
         Num5 = Input.GetKeyDown(KeyCode.Alpha5);
+        Grenade = Input.GetKeyDown(KeyCode.G);
 
         //foreach (KeyCode kcode in System.Enum.GetValues(typeof(KeyCode)))
         //{

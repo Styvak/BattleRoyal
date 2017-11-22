@@ -37,6 +37,7 @@ public class Shooter : MonoBehaviour
     {
         spine = transform.parent;
         weaponReloader = GetComponent<WeaponReloader>();
+
     }
 
     public void Equip()
@@ -54,8 +55,11 @@ public class Shooter : MonoBehaviour
             return false;
         if (weaponReloader.IsReloading)
             return false;
-        if (weaponReloader.RoundsRemainingClip == 0)
+        if (weaponReloader.RoundsRemainingClip <= 0)
+        {
+            weaponReloader.Reload();
             return false;
+        }
         weaponReloader.TakeFromClip(1);
         nextFireAllowed = Time.time + rateOfFire;
         canFire = true;
