@@ -1,13 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
+using DG.Tweening;
 
-public class Zone : MonoBehaviour {
+public class Zone : NetworkBehaviour {
 
     public float Damage { set {
             _damage = value;
         }
     }
+
+    [SerializeField] private Vector3[] _scales;
+
+    [SyncVar] private int idx = 0;
 
     private float _damage = 1f;
     private List<Destructable> _destructables = new List<Destructable>();
@@ -16,6 +22,7 @@ public class Zone : MonoBehaviour {
     {
         if (other.tag == "Player" && _destructables.Contains(other.GetComponent<Destructable>()))
         {
+            other.GetComponent<PlayerController>().DisablePostProcess();
             _destructables.Remove(other.GetComponent<Destructable>());
         }
     }
@@ -24,6 +31,7 @@ public class Zone : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
+            other.GetComponent<PlayerController>().ActivePostProcess();
             _destructables.Add(other.GetComponent<Destructable>());
         }
     }
@@ -38,8 +46,25 @@ public class Zone : MonoBehaviour {
         while (true) {
             yield return new WaitForSeconds(0.5f);
             foreach (var destructable in _destructables)
-                destructable.CmdTakeDamage(_damage);
+                if (destructable.gameObject.activeSelf)
+                    destructable.CmdTakeDamage(_damage);
         }
     }
 
+    public void StartScaleZone()
+    {
+        StartCoroutine(ScaleZone());
+    }
+
+    IEnumerator ScaleZone()
+    {
+        while (idx < _scales.Length)
+        {
+            yield return new WaitForSeconds(90f);
+            transform.DOScale(_scales[idx], 90);
+            _damage *= 2;
+            yield return new WaitForSeconds(90f);
+            idx++;
+        }
+    }
 }

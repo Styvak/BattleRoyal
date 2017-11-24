@@ -16,6 +16,7 @@ public class PlayerController : NetworkBehaviour {
     [SerializeField] private float jumpForce;
     [SerializeField] private MouseInput mouseControl;
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject postProcess;
 
     private Rigidbody rig;
 
@@ -79,10 +80,24 @@ public class PlayerController : NetworkBehaviour {
         
         Vector2 direction = new Vector2(playerInput.Vertical * speed, playerInput.Horizontal * speed);
         MoveController.Move(direction);
+
+        if (isLocalPlayer)
+            if (GameObject.FindWithTag("PartyManager").GetComponent<PartyManager>().state == PartyManager.StateFSM.End)
+                GameObject.Find("Canvas").transform.GetChild(2).gameObject.SetActive(true);
 	}
 
     bool Grounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, 0.1f);
+    }
+
+    public void ActivePostProcess()
+    {
+        postProcess.SetActive(true);
+    }
+
+    public void DisablePostProcess()
+    {
+        postProcess.SetActive(false);
     }
 }

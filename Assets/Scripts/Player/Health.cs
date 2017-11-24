@@ -17,7 +17,7 @@ public class Health : Destructable
     public override void Die()
     {
         base.Die();
-
+        gameObject.SetActive(false);
     }
 
     public override void OnDamageTaken(float damage)

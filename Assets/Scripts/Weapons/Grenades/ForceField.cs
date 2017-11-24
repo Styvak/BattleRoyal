@@ -31,7 +31,7 @@ public class ForceField : NetworkBehaviour {
         yield return new WaitForSeconds(duration);
         foreach (var col in colliders)
         {
-            if (col.gameObject.GetComponent<TimeBehaviour>())
+            if (col && col.gameObject.GetComponent<TimeBehaviour>())
             {
                 col.gameObject.GetComponent<TimeBehaviour>().TimeController(1f);
             }

@@ -7,6 +7,8 @@ TagManager:
   - HealthBar
   - ForceField
   - Zone
+  - UIWin
+  - PartyManager
   layers:
   - Default
   - TransparentFX

@@ -25,6 +25,8 @@ public class PartyManager : NetworkBehaviour {
 
     [SyncVar] private bool coroutineRunning = false;
 
+    private GameObject[] _players;
+
     void Start()
     {
         StartCoroutine(FSMCorutine());
@@ -64,8 +66,10 @@ public class PartyManager : NetworkBehaviour {
                 break;
             case StateFSM.Battle:
                 Debug.Log("Battle");
+                _players = GameObject.FindGameObjectsWithTag("Player");
+                GameObject.FindWithTag("Zone").GetComponent<Zone>().StartScaleZone();
                 timerText.gameObject.SetActive(false);
-                if (playerAlive == 1)
+                if (IsOnePlayerLeft())
                 {
                     state = StateFSM.End;
                 }
@@ -81,7 +85,6 @@ public class PartyManager : NetworkBehaviour {
     [Command]
     void CmdSetCoroutine(bool act)
     {
-        Debug.Log("act");
         coroutineRunning = act;
     }
 
@@ -106,5 +109,23 @@ public class PartyManager : NetworkBehaviour {
     {
         timerText.gameObject.SetActive(true);
         timerText.text = time + (time <= 1 ? " seconde" : " secondes");
+    }
+
+    bool IsOnePlayerLeft()
+    {
+        int nb = 0;
+
+        foreach (var obj in _players)
+            if (obj.activeSelf)
+                nb++;
+        return nb <= 1;
+    }
+
+    GameObject GetOnePlayerLeft()
+    {
+        foreach (var obj in _players)
+            if (obj.activeSelf)
+                return obj;
+        return null;
     }
 }
